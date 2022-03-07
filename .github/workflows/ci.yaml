@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  calculator_job:
+    runs-on: ubuntu-latest
+    name: check
+    steps:
+      - uses: actions/checkout@v2
+        working-directory: ./ci/app
+      - uses: actions/setup-node@v2
+        working-directory: ./ci/app
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm test
